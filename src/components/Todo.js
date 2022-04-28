@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 
 const List = styled.div`
 	margin: 10px auto;	
-	width: 360px;
+	max-width: 360px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -24,10 +24,10 @@ const Button = styled.button`
 `
 
 export default function Todo({todos, removeTodo}) {
-    return todos.map((thing) => (
-        <List  key={thing.id}>
-          <div>{thing.text}</div>
-				<Button onClick={() => { removeTodo(thing.id) }}> Delete </Button>
+    return todos.map((thingtodo) => (
+        <List  key={thingtodo.id}>
+          <div>{thingtodo.text}</div>
+				<Button onClick={() => { removeTodo(thingtodo.id) }}> Delete </Button>
         </List>
         
     ))

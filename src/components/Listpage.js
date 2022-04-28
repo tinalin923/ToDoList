@@ -12,8 +12,7 @@ export default function ListPage() {
 	const [todos, setTodos] = useState([]);
 
 	const addTodo = (todo) => {
-		// console.log(todo.text);
-		if (!todo.text) { return;}
+		if (!todo.text) { return; }
 		const newTodos = [todo, ...todos];
 		setTodos(newTodos);
 		// console.log(newTodos);

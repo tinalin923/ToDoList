@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.js';
 
-import HomePage from './components/Homepage.js';
-import ChangeButton from './components/Button.js';
+ReactDOM.render(<App />, document.getElementById('root'));
 
-
-ReactDOM.render(<HomePage />,document.getElementById('main'))
-ReactDOM.render(<ChangeButton />, document.getElementById('root'));
 
 
 

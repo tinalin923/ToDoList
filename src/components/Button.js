@@ -21,19 +21,17 @@ const Button = styled.button`
 `;
 
 export default function ChangeButton() {
-    const [list, setList] = useState(false);
-    const [content, setContent] = useState("Start");
+    const [isEdit, setIsEdit] = useState(false);
+    const [button, setButton] = useState("Start");
 
     const changHandler = () => {
-        setList(!list);
-        if (list) {
-            setContent("Start");
-            ReactDOM.render(<HomePage />,document.getElementById('main'))
+        setIsEdit(!isEdit);
+        if (isEdit) {
+            setButton("Start");
         } else {
-            setContent("Back");
-            ReactDOM.render(<ListPage />,document.getElementById('main'))
+            setButton("Back");
         }
     };
-    return <Button onClick={changHandler}>{content}</Button>;
+    return <Button onClick={changHandler}>{button}</Button>;
 };
 
