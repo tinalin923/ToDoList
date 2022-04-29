@@ -5,20 +5,22 @@ import ListPage from './components/Listpage.js';
 
 
 export default function App() {
+    const home = <HomePage />;
+    const list = <ListPage />;
     const [isEdit, setIsEdit] = useState(false);
-    const [main, setMain] = useState(<HomePage />);
-
+    const [page, setPage] = useState(home);
+    
     useEffect(() => {
         if (isEdit) {
-            setMain(<ListPage />);
+            setPage(list);
         } else {
-            setMain(<HomePage />);
+            setPage(home);
         }
     }, [isEdit]);
 
     return (
         <>
-            <div>{main}</div>
+            <div>{page}</div>
             <ChangeButton
                 setIsEdit={setIsEdit}
                 isEdit={isEdit} />
