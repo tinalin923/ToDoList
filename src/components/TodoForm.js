@@ -38,17 +38,16 @@ export default function TodoForm(props) {
         e.preventDefault();
         // console.log(e.target.todo.value);
         props.onSubmit({
-            id: Math.floor(Math.random()*1000),
+            id: Math.floor(Math.random() * 1000),
             text: thing
         });
         setThing('');
-    }
+    };
 
     return (
         <InputForm onSubmit={handleSubmit}>
             <TodoInput
                 type='text'
-                // name='todo'
                 placeholder='add a todo'
                 onChange={(e) => { setThing(e.target.value) }}
                 value={thing}

@@ -23,13 +23,14 @@ export default function ListPage() {
 		const newArr = todos.filter(todo => { return todo.id !== id; });
 		// console.log(newArr);
 		setTodos(newArr);
-	}
+	};
+	
 	return (
 		<>
 			<TodoForm onSubmit={addTodo} />
 			<ListContainer>
-				<Todo todos={todos} removeTodo={removeTodo}/>
+				<Todo todos={todos} removeTodo={removeTodo} />
 			</ListContainer>
 		</>
-		)
+	);
 };

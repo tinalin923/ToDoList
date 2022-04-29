@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react';
+
 import styled from 'styled-components';
-import ListPage from './Listpage.js';
-import HomePage from './Homepage.js';
 
 const Button = styled.button`
     display:block;  
@@ -20,18 +18,17 @@ const Button = styled.button`
     }
 `;
 
-export default function ChangeButton() {
-    const [isEdit, setIsEdit] = useState(false);
+export default function ChangeButton({isEdit,setIsEdit}) {
     const [button, setButton] = useState("Start");
 
-    const changHandler = () => {
+    useEffect(() => {
+        isEdit ? setButton("Back") : setButton("Start");
+    }, [isEdit]);
+    
+    const changeHandeler = () => {
         setIsEdit(!isEdit);
-        if (isEdit) {
-            setButton("Start");
-        } else {
-            setButton("Back");
-        }
     };
-    return <Button onClick={changHandler}>{button}</Button>;
+    
+    return <Button onClick={changeHandeler}>{button}</Button>;
 };
 
