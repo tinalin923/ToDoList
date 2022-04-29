@@ -24,10 +24,10 @@ const Button = styled.button`
 `
 
 export default function Todo({todos, removeTodo}) {
-    return todos.map((thingtodo) => (
-        <List  key={thingtodo.id}>
-          <div>{thingtodo.text}</div>
-				<Button onClick={() => { removeTodo(thingtodo.id) }}> Delete </Button>
+    return todos.map(({id, text}) => (
+        <List  key={id}>
+          <div>{text}</div>
+		  <Button onClick={() => { removeTodo(id) }}> Delete </Button>
         </List>
         
     ))

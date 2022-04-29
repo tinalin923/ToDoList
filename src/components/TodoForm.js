@@ -48,7 +48,7 @@ export default function TodoForm(props) {
         <InputForm onSubmit={handleSubmit}>
             <TodoInput
                 type='text'
-                placeholder='add a todo'
+                placeholder='Add a Todo'
                 onChange={(e) => { setThing(e.target.value) }}
                 value={thing}
             />
