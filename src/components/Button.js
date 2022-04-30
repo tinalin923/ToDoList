@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import styled from 'styled-components';
 
@@ -21,12 +21,9 @@ const Button = styled.button`
 export default function ChangeButton({isEdit,setIsEdit}) {
     const [button, setButton] = useState("Start");
 
-    useEffect(() => {
-        isEdit ? setButton("Back") : setButton("Start");
-    }, [isEdit]);
-    
     const changeHandeler = () => {
         setIsEdit(!isEdit);
+        isEdit ? setButton("Start") : setButton("Back");
     };
     
     return <Button onClick={changeHandeler}>{button}</Button>;

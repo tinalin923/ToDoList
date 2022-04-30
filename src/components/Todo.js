@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const List = styled.div`
 	margin: 10px auto;	
 	max-width: 360px;
@@ -21,14 +20,15 @@ const Button = styled.button`
 	&:hover{
 			box-shadow: 2px 2px 5px #556588;
 	}
-`
+`;
 
-export default function Todo({todos, removeTodo}) {
-    return todos.map(({id, text}) => (
-        <List  key={id}>
-          <div>{text}</div>
-		  <Button onClick={() => { removeTodo(id) }}> Delete </Button>
-        </List>
-        
-    ))
+export default function Todo({ todo, removeTodo}) {
+	return (
+		<>
+			<List key={todo.id}>
+				<div>{todo.text}</div>
+				<Button onClick={() => { removeTodo(todo.id) }}> Delete </Button>
+			</List>
+		</>
+	)
 };

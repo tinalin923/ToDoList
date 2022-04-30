@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { serverTimestamp } from 'firebase/firestore';
 import styled from 'styled-components';
 
 const InputForm = styled.form`
@@ -9,7 +9,6 @@ const InputForm = styled.form`
     justify-content: center;
     align-items: center;
 `;
-
 
 const TodoInput = styled.input`
     border-radius: 2px;
@@ -32,16 +31,15 @@ const AddButton = styled.button`
 `;
 
 export default function TodoForm(props) {
-    const [thing, setThing] = useState('');
+    const [input, setInput] = useState('');
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(e.target.todo.value);
         props.onSubmit({
-            id: Math.floor(Math.random() * 1000),
-            text: thing
+            createdAt: serverTimestamp(),
+            text: input
         });
-        setThing('');
+        setInput('');
     };
 
     return (
@@ -49,8 +47,8 @@ export default function TodoForm(props) {
             <TodoInput
                 type='text'
                 placeholder='Add a Todo'
-                onChange={(e) => { setThing(e.target.value) }}
-                value={thing}
+                value={input}
+                onChange={(e) => { setInput(e.target.value) }}
             />
             <AddButton type='submit' > Add Todo </AddButton>
         </InputForm>
