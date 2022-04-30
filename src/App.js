@@ -5,14 +5,14 @@ import ListPage from './components/Listpage.js';
 
 
 export default function App() {
-    const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
-    return (
-        <>
-            {isEdit ? <ListPage /> : <HomePage /> }
-            <ChangeButton
-                setIsEdit={setIsEdit}
-                isEdit={isEdit} />
-        </>
-    );
+  return (
+    <>
+			{isEdit ? <ListPage /> : <HomePage /> }
+			<ChangeButton
+				setIsEdit={setIsEdit}
+				isEdit={isEdit} />
+    </>
+  );
 }

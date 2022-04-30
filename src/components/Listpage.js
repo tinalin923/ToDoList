@@ -17,13 +17,11 @@ export default function ListPage() {
 	
 	useEffect(() => {
 		const q = query(listCollection, orderBy('createdAt', 'desc'));
-		onSnapshot(
-			q, (snapshot) => {
-				setTodos(snapshot.docs.map(doc => ({id:doc.id, text:doc.data().text}) ));
-			},
-			(error) => {
-				console.log(error);
-			});
+		onSnapshot( q, (snapshot) => {
+			setTodos(snapshot.docs.map(doc => ({id:doc.id, text:doc.data().text}) ));
+		}, (error) => {
+			console.log(error);
+		});
 	},[])
 	
 	const addTodo = (input) => {

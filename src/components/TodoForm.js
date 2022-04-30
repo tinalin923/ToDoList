@@ -31,26 +31,26 @@ const AddButton = styled.button`
 `;
 
 export default function TodoForm(props) {
-    const [input, setInput] = useState('');
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        props.onSubmit({
-            createdAt: serverTimestamp(),
-            text: input
-        });
-        setInput('');
-    };
+	const [input, setInput] = useState('');
+	
+	const handleSubmit = (e) => {
+			e.preventDefault();
+			props.onSubmit({
+					createdAt: serverTimestamp(),
+					text: input
+			});
+			setInput('');
+	};
 
-    return (
-        <InputForm onSubmit={handleSubmit}>
-            <TodoInput
-                type='text'
-                placeholder='Add a Todo'
-                value={input}
-                onChange={(e) => { setInput(e.target.value) }}
-            />
-            <AddButton type='submit' > Add Todo </AddButton>
-        </InputForm>
-    )
+	return (
+		<InputForm onSubmit={handleSubmit}>
+			<TodoInput
+				type='text'
+				placeholder='Add a Todo'
+				value={input}
+				onChange={(e) => { setInput(e.target.value) }}
+			/>
+			<AddButton type='submit' > Add Todo </AddButton>
+		</InputForm>
+	)
 }
