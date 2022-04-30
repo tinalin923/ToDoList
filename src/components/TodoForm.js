@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-// import {   onSnapshot, query, orderBy } from "firebase/firestore"; 
-
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig.js';
 
@@ -40,18 +38,19 @@ export default function TodoForm() {
 
 	const addTodo = (e) => {
 		e.preventDefault();
+		setInput('');
 		if (!input) { return; }
-		const inputt = {
+		const newInput = {
 			createdAt: serverTimestamp(),
 			text: input
 		};
 		
 		try {
-			addDoc(listCollection, inputt);
+			addDoc(listCollection, newInput);
 	   	} catch (e) {
 		   console.error("Error adding document: ", e);
 		}
-		setInput('');
+		
 	};
 
 	return (

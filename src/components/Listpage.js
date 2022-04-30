@@ -2,13 +2,30 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TodoForm from './TodoForm.js';
 import Todo from './Todo.js';
-import { collection, addDoc, onSnapshot, query, orderBy } from "firebase/firestore"; 
+import { collection, onSnapshot, query, orderBy } from "firebase/firestore"; 
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../firebase/firebaseConfig.js';
+import { Link } from "react-router-dom";
 
 const ListContainer = styled.div`
     border: 1px solid #DCDDD5;
     padding: 20px 0px;
+`;
+
+const Button = styled.button`
+    display:block;  
+	width: fit-content;
+    margin-left: auto;
+    margin-right: auto;   
+    margin-top: 100px;
+    border: none;    
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #36688D;
+    cursor: pointer;
+    &:hover{
+        box-shadow: 2px 2px 5px #556588;
+    }
 `;
 
 export default function ListPage() {
@@ -17,10 +34,10 @@ export default function ListPage() {
 	
 	useEffect(() => {
 		const q = query(listCollection, orderBy('createdAt', 'desc'));
-		onSnapshot(q, (snapshot) => {
-			console.log(snapshot.docs[0].id);
+	    onSnapshot(q, (snapshot) => {
+			// console.log(snapshot.docs[0].id);
 			setTodos(snapshot.docs.map(doc => ({ id: doc.id, text: doc.data().text })));
-			console.log(todos);
+			// console.log(todos);
 		}, (error) => {
 			console.log(error);
 		});
@@ -36,6 +53,9 @@ export default function ListPage() {
 			<ListContainer>
 				{todos.map(todo => (<Todo key={todo.id} todo={ todo } removeTodo={removeTodo} />))}
 			</ListContainer>
+			<Button as={ Link } to="/" style={{ textDecoration: 'none', color: 'white' }}>
+					Back
+			</Button>
 		</>
 	);
 };
