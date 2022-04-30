@@ -17,33 +17,22 @@ export default function ListPage() {
 	
 	useEffect(() => {
 		const q = query(listCollection, orderBy('createdAt', 'desc'));
-		onSnapshot( q, (snapshot) => {
-			setTodos(snapshot.docs.map(doc => ({id:doc.id, text:doc.data().text}) ));
+		onSnapshot(q, (snapshot) => {
+			console.log(snapshot.docs[0].id);
+			setTodos(snapshot.docs.map(doc => ({ id: doc.id, text: doc.data().text })));
+			console.log(todos);
 		}, (error) => {
 			console.log(error);
 		});
 	},[])
-	
-	const addTodo = (input) => {
-		if (!input.text) { return; }
-		try {
-		 	addDoc(listCollection, input);
-		} catch (e) {
-			console.error("Error adding document: ", e);
-		}
-		const newTodos = [...todos, input];
-		setTodos(newTodos);
-	};
 
 	const removeTodo = (id) => {
 		deleteDoc(doc(db, "todos", id));
-		// const newArr = todos.filter(todo => { return todo.id !== id; });
-		// setTodos(newArr);
 	};
 	
 	return (
 		<>
-			<TodoForm onSubmit={addTodo} />
+			<TodoForm />
 			<ListContainer>
 				{todos.map(todo => (<Todo key={todo.id} todo={ todo } removeTodo={removeTodo} />))}
 			</ListContainer>

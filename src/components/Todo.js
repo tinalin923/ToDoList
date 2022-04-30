@@ -25,7 +25,7 @@ const Button = styled.button`
 export default function Todo({ todo, removeTodo}) {
 	return (
 		<>
-			<List key={todo.id}>
+			<List>
 				<div>{todo.text}</div>
 				<Button onClick={() => { removeTodo(todo.id) }}> Delete </Button>
 			</List>

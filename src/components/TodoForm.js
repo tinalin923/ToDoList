@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { serverTimestamp } from 'firebase/firestore';
+// import {   onSnapshot, query, orderBy } from "firebase/firestore"; 
+
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase/firebaseConfig.js';
+
 import styled from 'styled-components';
 
 const InputForm = styled.form`
@@ -30,20 +34,28 @@ const AddButton = styled.button`
     color: white;
 `;
 
-export default function TodoForm(props) {
+export default function TodoForm() {
 	const [input, setInput] = useState('');
-	
-	const handleSubmit = (e) => {
-			e.preventDefault();
-			props.onSubmit({
-					createdAt: serverTimestamp(),
-					text: input
-			});
-			setInput('');
+	const listCollection = collection(db, 'todos');
+
+	const addTodo = (e) => {
+		e.preventDefault();
+		if (!input) { return; }
+		const inputt = {
+			createdAt: serverTimestamp(),
+			text: input
+		};
+		
+		try {
+			addDoc(listCollection, inputt);
+	   	} catch (e) {
+		   console.error("Error adding document: ", e);
+		}
+		setInput('');
 	};
 
 	return (
-		<InputForm onSubmit={handleSubmit}>
+		<InputForm onSubmit={ addTodo }>
 			<TodoInput
 				type='text'
 				placeholder='Add a Todo'
