@@ -14,7 +14,7 @@ const ListContainer = styled.div`
 
 const Button = styled.button`
     display:block;
-width: fit-content;
+		width: fit-content;
     margin-left: auto;
     margin-right: auto;   
     margin-top: 100px;
@@ -22,8 +22,8 @@ width: fit-content;
     border-radius: 10px;
     padding: 15px;
     background-color: #36688D;
-cursor: pointer;
-text-decoration: none;
+		cursor: pointer;
+		text-decoration: none;
 		color: white;
     &:hover{
         box-shadow: 2px 2px 5px #556588;
