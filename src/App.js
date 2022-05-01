@@ -1,35 +1,17 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import styled from 'styled-components';
-import HeroImage from './components/HeroImage.js';
-import Top from './components/Top.js';
-
-const Button = styled.button`
-    display:block;  
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;   
-    margin-top: 100px;
-    border: none;    
-    border-radius: 10px;
-    padding: 15px;
-    background-color: #36688D;
-    text-decoration: none;
-	color: white;
-    cursor: pointer;
-    &:hover{
-        box-shadow: 2px 2px 5px #556588;
-    }
-`;
+import { BrowserRouter,	Routes,	Route } from "react-router-dom";
+import HomePage from './components/Homepage.js';
+import ListPage from './components/Listpage.js';
 
 export default function App() {
 	return (
 		<>	
-			<Top />
-			<HeroImage />
-			<Button as={Link} to="/list" >
-					Start
-			</Button>
+		  <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/list" element={<ListPage />} />
+        </Routes>
+    	</BrowserRouter>
 		</>
 	)
 };
