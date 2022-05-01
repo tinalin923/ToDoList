@@ -13,7 +13,7 @@ const ListContainer = styled.div`
 `;
 
 const Button = styled.button`
-    display:block;  
+    display:block;
 	width: fit-content;
     margin-left: auto;
     margin-right: auto;   
