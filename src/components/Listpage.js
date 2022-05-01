@@ -23,6 +23,8 @@ const Button = styled.button`
     padding: 15px;
     background-color: #36688D;
     cursor: pointer;
+	text-decoration: none;
+	color: white;
     &:hover{
         box-shadow: 2px 2px 5px #556588;
     }
@@ -35,9 +37,7 @@ export default function ListPage() {
 	useEffect(() => {
 		const q = query(listCollection, orderBy('createdAt', 'desc'));
 	    onSnapshot(q, (snapshot) => {
-			// console.log(snapshot.docs[0].id);
 			setTodos(snapshot.docs.map(doc => ({ id: doc.id, text: doc.data().text })));
-			// console.log(todos);
 		}, (error) => {
 			console.log(error);
 		});
@@ -53,7 +53,7 @@ export default function ListPage() {
 			<ListContainer>
 				{todos.map(todo => (<Todo key={todo.id} todo={ todo } removeTodo={removeTodo} />))}
 			</ListContainer>
-			<Button as={ Link } to="/" style={{ textDecoration: 'none', color: 'white' }}>
+			<Button as={ Link } to="/" >
 					Back
 			</Button>
 		</>

@@ -14,7 +14,8 @@ const Button = styled.button`
     border-radius: 10px;
     padding: 15px;
     background-color: #36688D;
-    color: white;
+    text-decoration: none;
+	color: white;
     cursor: pointer;
     &:hover{
         box-shadow: 2px 2px 5px #556588;
@@ -26,7 +27,7 @@ export default function App() {
 		<>	
 			<Top />
 			<HeroImage />
-			<Button as={Link} to="/list" style={{ textDecoration: 'none', color: 'white' }}>
+			<Button as={Link} to="/list" >
 					Start
 			</Button>
 		</>
