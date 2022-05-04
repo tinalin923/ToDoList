@@ -43,12 +43,12 @@ const Button = styled.button`
 
 export default function HomePage(){
   return (
-		<>
-			<Title>React practice</Title>
+	<>
+	  <Title>React practice</Title>
       <Section>Welcome to My Home</Section>
       <Button as={Link} to="/list" >
-				Start
-			</Button>
-		</>
+			Start
+	  </Button>
+	</>
 	)
 };

@@ -1,5 +1,8 @@
 import { initializeApp } from 'firebase/app';
+//for firestore
 import { getFirestore } from "firebase/firestore";
+//for firebase auth
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyA1JV6ZDqsnR0p-ozvYQXEAeztE1NTNfDg",
@@ -15,3 +18,24 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export { db };
+
+    
+//for auth
+// export const AuthContext = createContext();
+
+// export const AuthContextProvider = ({ children }) = {
+//   const [user, setUser] = useState('');
+//   const [error, setError] = useState('');
+    
+//   useEffect(()=> {
+// 		const unsubscribe = onAuthStateChange(getAuth(), setUser, setError)
+	
+//   },[])
+
+//     return(
+//         <AuthContext.Provider value={ auth } >
+//             {children}
+//         </AuthContext.Provider>
+    
+//     )
+// }
