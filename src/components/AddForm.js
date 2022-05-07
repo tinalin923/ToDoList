@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig.js';
+import { useAuthState } from './contexts/AuthContext.js';
+
 
 import styled from 'styled-components';
 
@@ -33,8 +35,9 @@ const AddButton = styled.button`
 `;
 
 export default function TodoForm() {
+	const { currentUser } = useAuthState();
 	const [input, setInput] = useState('');
-	const listCollection = collection(db, 'todos');
+	const listCollection = collection(db, currentUser.uid);   //創造or 尋找 collection
 
 	const addTodo = (e) => {
 		e.preventDefault();

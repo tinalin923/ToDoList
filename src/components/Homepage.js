@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useAuthState } from './contexts/AuthContext';
+import { getAuth, signOut } from 'firebase/auth';
 
 const Title = styled.div`
     height: 80px;
@@ -41,14 +43,15 @@ const Button = styled.button`
     }
 `;
 
-export default function HomePage(){
+export default function HomePage() {
+  const { user } = useAuthState();
+  const auth = getAuth();
   return (
 	<>
 	  <Title>React practice</Title>
-      <Section>Welcome to My Home</Section>
-      <Button as={Link} to="/list" >
-			Start
-	  </Button>
+      <Section>Hello, {user?.email} Welcome Home</Section>
+      <button onClick={() => signOut(auth)}>Sign Out</button>
+      <Button as={Link} to="/list" > Start </Button>
 	</>
 	)
 };

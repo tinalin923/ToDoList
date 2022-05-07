@@ -6,6 +6,7 @@ import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from '../firebase/firebaseConfig.js';
 import { Link } from "react-router-dom";
+import { useAuthState } from './contexts/AuthContext.js';
 
 const ListContainer = styled.div`
     border: 1px solid #DCDDD5;
@@ -31,7 +32,8 @@ const Button = styled.button`
 `;
 
 export default function ListPage() {
-	const listCollection = collection(db, 'todos');
+	const { currentUser } = useAuthState();
+	const listCollection = collection(db, currentUser.uid);
 	const [todos, setTodos] = useState([]);
 	
 	useEffect(() => {
@@ -44,7 +46,7 @@ export default function ListPage() {
 	},[])
 
 	const removeTodo = (id) => {
-		deleteDoc(doc(db, "todos", id));
+		deleteDoc(doc(db, currentUser.uid, id));
 	};
 	
 	return (
