@@ -6,31 +6,6 @@ import Login from './components/Login.js';
 import Signup from './components/Signup.js';
 import { AuthContextProvider, useAuthState } from './components/contexts/AuthContext.js';
 
-
-// const AuthenticatedRoute = ({ component: C, ...props }) => {
-// 	const { isAuthenticated } = useAuthState();
-// 	return (
-// 		<Route
-// 			{...props}
-// 			render={routeProps =>
-// 				isAuthenticated ? <C {...routeProps} /> : <Redirect to='/login' />
-// 			}
-// 		></Route>
-// 	) 
-// }
-
-// const UnauthenticatedRoute = ({ component: C, ...props }) => {
-// 	const { isAuthenticated } = useAuthState();
-// 	return (
-// 		<Route
-// 			{...props}
-// 			render={routeProps =>
-// 				!isAuthenticated ? <C {...routeProps} /> : <Redirect to='/' />
-// 			}
-// 		/>
-// 	);
-// };
-
 function RequireAuth({children}) {
 	const { currentUser } = useAuthState();
 	let location = useLocation();

@@ -1,4 +1,3 @@
-// require('dotenv').config
 import { initializeApp } from 'firebase/app';
 //for firestore
 import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
